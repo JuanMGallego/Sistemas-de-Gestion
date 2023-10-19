@@ -1,0 +1,21 @@
+﻿@{
+    DateTime now = DateTime.Now;
+    string hora = now.ToString("hh:mm");
+    string mensaje = now.Hour <= 12 ? "Buenos días" : "Buenas tardes";
+}
+
+
+<head>
+    <title>¡Hola!</title>
+</head>
+<body>
+    <h1>@mensaje, son las @hora</h1>
+    @if (now.Hour < 12)
+    {
+        <p>Es antes de las 12 del mediodía.</p>
+    }
+    else
+    {
+        <p>Es después de las 12 del mediodía.</p>
+    }
+</body>

@@ -1,0 +1,24 @@
+﻿@{
+    var numeroFilas = 12;
+    var numeroColumnas = 10;
+}
+
+<table border="1">
+    <tr>
+        <th>X</th>
+        @for (int i = 1; i <= numeroColumnas; i++)
+        {
+            <th>@i</th>
+        }
+    </tr>
+    @for (int i = 1; i <= numeroFilas; i++)
+    {
+        <tr>
+            <th>@i</th>
+            @for (int j = 1; j <= numeroColumnas; j++)
+            {
+                <td>@(i * j)</td>
+            }
+        </tr>
+    }
+</table>

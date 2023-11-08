@@ -55,12 +55,9 @@ namespace Unidad07_Ejercicio01.Models.Entidades
     }
 
     public int IdDept
-    get
-    { return idDept; }
+    get { return idDept; }
     set { idDept = value; }
-    O referencias
     public String Direccion { get; set; }
-    O referencias
     public String nombreCompleto
     {
     get { return $"Su nombre completo es: {nombre} {apellidos}" }

@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jmgallego\\Documents\\GitHub\\Sistemas de Gestion\\Unidad07_Ejercicio01\\Unidad07_Ejercicio01\\Unidad07_Ejercicio01.csproj",
+      "projectUniqueName": "C:\\Users\\jmgallego\\Documents\\GitHub\\Sistemas-de-Gestion\\Unidad07_Ejercicio01\\Unidad07_Ejercicio01\\Unidad07_Ejercicio01.csproj",
       "projectName": "Unidad07_Ejercicio01",
-      "projectPath": "C:\\Users\\jmgallego\\Documents\\GitHub\\Sistemas de Gestion\\Unidad07_Ejercicio01\\Unidad07_Ejercicio01\\Unidad07_Ejercicio01.csproj",
+      "projectPath": "C:\\Users\\jmgallego\\Documents\\GitHub\\Sistemas-de-Gestion\\Unidad07_Ejercicio01\\Unidad07_Ejercicio01\\Unidad07_Ejercicio01.csproj",
       "packagesPath": "C:\\Users\\jmgallego\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jmgallego\\Documents\\GitHub\\Sistemas de Gestion\\Unidad07_Ejercicio01\\Unidad07_Ejercicio01\\obj\\",
+      "outputPath": "C:\\Users\\jmgallego\\Documents\\GitHub\\Sistemas-de-Gestion\\Unidad07_Ejercicio01\\Unidad07_Ejercicio01\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

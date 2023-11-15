@@ -1,0 +1,21 @@
+﻿ @{
+    ViewData["Title"] = "Home Page";
+}
+
+@model EjsU7_SG.Models.Entidades.clsPersona
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>@ViewData["Message"], usuario</p>
+    <p>Hoy es @ViewBag.fechaLarga </p>
+    <br />
+    <p>Los datos que vienen del modelo son:</p>
+    <p>Nombre: @Model.Nombre</p>
+    <p>Apellidos: @Model.Apellidos</p>
+    <p>Dirección: @Model.Direccion</p>
+    <p>Fecha de nacimiento: @Model.FechaNac</p>
+    <p>Teléfono: @Model.Tlfn</p>
+    <br />
+    @Html.ActionLink("Listado de personas", "listadoPersonas")
+    @Html.ActionLink("Editar persona", "EditarPersona", "EditarPersona")
+</div>

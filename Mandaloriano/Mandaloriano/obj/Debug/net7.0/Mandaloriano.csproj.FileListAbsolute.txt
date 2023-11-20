@@ -1,0 +1,7 @@
+C:\Users\jmgallego\Documents\GitHub\Sistemas-de-Gestion\Mandaloriano\Mandaloriano\obj\Debug\net7.0\Mandaloriano.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jmgallego\Documents\GitHub\Sistemas-de-Gestion\Mandaloriano\Mandaloriano\obj\Debug\net7.0\Mandaloriano.AssemblyInfoInputs.cache
+C:\Users\jmgallego\Documents\GitHub\Sistemas-de-Gestion\Mandaloriano\Mandaloriano\obj\Debug\net7.0\Mandaloriano.AssemblyInfo.cs
+C:\Users\jmgallego\Documents\GitHub\Sistemas-de-Gestion\Mandaloriano\Mandaloriano\obj\Debug\net7.0\Mandaloriano.csproj.CoreCompileInputs.cache
+C:\Users\jmgallego\Documents\GitHub\Sistemas-de-Gestion\Mandaloriano\Mandaloriano\obj\Debug\net7.0\Mandaloriano.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\jmgallego\Documents\GitHub\Sistemas-de-Gestion\Mandaloriano\Mandaloriano\obj\Debug\net7.0\Mandaloriano.RazorAssemblyInfo.cache
+C:\Users\jmgallego\Documents\GitHub\Sistemas-de-Gestion\Mandaloriano\Mandaloriano\obj\Debug\net7.0\Mandaloriano.RazorAssemblyInfo.cs

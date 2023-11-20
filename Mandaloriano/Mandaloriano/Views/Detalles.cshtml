@@ -1,0 +1,13 @@
+﻿@model TuProyecto.Models.Mision
+
+<h2>Detalles de la misión</h2>
+@if (Model != null)
+{
+    <p><strong>Nombre:</strong> @Model.Nombre</p>
+    <p><strong>Descripción:</strong> @Model.Descripcion</p>
+    <p><strong>Recompensa:</strong> @Model.Recompensa</p>
+}
+else
+{
+    <p>Selecciona una misión para ver detalles.</p>
+}

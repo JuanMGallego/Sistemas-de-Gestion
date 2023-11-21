@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Misiones";
+}
+
+<h2>Misiones</h2>
+
+@using (Html.BeginForm("Index", "Mision"))
+{
+    @Html.DropDownList("seleccion", ViewBag.Misiones as SelectList, "Seleccione una misión")
+    <input type="submit" value="Ver detalles" />
+}
+
+@if (Model != null)
+{
+    <h3>Detalles de la Misión</h3>
+    <p><strong>Nombre:</strong> @Model.Nombre</p>
+    <p><strong>Descripción:</strong> @Model.Descripcion</p>
+    <p><strong>Recompensa:</strong> @Model.Recompensa</p>
+}

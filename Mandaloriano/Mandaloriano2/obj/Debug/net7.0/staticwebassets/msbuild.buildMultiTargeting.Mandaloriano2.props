@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\Mandaloriano2.props" />
-</Project>

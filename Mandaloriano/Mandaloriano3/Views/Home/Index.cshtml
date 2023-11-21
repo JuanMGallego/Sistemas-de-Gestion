@@ -9,7 +9,7 @@
 			padding: 0;
 			margin: 0;
 			box-sizing: border-box;
-			font-family: 'Vina Sans', sans-serif;
+			font-family: 'Lucida Sans Unicode';
 		}
 
 		body{
@@ -76,7 +76,7 @@
 			height: 4px;
 			width: 50px;
 			border-radius: 2px;
-			background-color: #2ecc71;
+			background-color: #E87604;
 		}
 
 		.field{
@@ -94,8 +94,24 @@
 			background-color: rgba(0, 0, 0, 0.1);
 		}
 
-		.mission-details{
+		.mission-details-withtitle{
+			margin-top: 20px;
+		}
+
+		.mission-details {
+			margin-top: 20px;
+			background-color: lightgray;
 			padding: 10px;
+			box-shadow: 0px 0px 19px 5px rgba(0,0,0,0.19)
+		}
+
+		.clave{
+			margin: 10px;
+			text-decoration: underline;
+		}
+
+		.valor{
+			margin: 10px;
 		}
 
 	</style>
@@ -117,20 +133,20 @@
 				}
 				@if (ViewBag.MisionSeleccionada != null)
 				{
-					<div class="mission-details">
-						<h3>Detalles de la misión seleccionada:</h3>
-						<table>
+					<div class="mission-details-withtitle">
+						<h5>Detalles de la misión seleccionada:</h5>
+						<table class="mission-details">
 							<tr>
-								<td><p><strong>Nombre:</strong></p></td>
-								<td><p>@ViewBag.MisionSeleccionada.Nombre</p></td>
+								<td align="right" valign="top"><p class="clave"><strong>Nombre:</strong></p></td>
+								<td align="left"><p class="valor">@ViewBag.MisionSeleccionada.Nombre</p></td>
 							</tr>
-							<tr>
-								<td><p><strong>Descripción:</strong></p></td>
-								<td><p>@ViewBag.MisionSeleccionada.Descripcion</p></td>
+							<tr class="fila">
+								<td align="right" valign="top"><p class="clave"><strong>Descripción:</strong></p></td>
+								<td align="left"><p class="valor">@ViewBag.MisionSeleccionada.Descripcion</p></td>
 							</tr>
-							<tr>
-								<td><p><strong>Recompensa:</strong></p></td>
-								<td><p>@ViewBag.MisionSeleccionada.Recompensa</p></td>
+							<tr class="fila">
+								<td align="right" valign="top"><p class="clave"><strong>Recompensa:</strong></p></td>
+								<td align="left"><p class="valor">@ViewBag.MisionSeleccionada.Recompensa</p></td>
 							</tr>
 						</table>
 					</div>

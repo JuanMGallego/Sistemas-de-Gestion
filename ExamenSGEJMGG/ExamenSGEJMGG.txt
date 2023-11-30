@@ -1,0 +1,84 @@
+CAPA DAL
+	clsConexion
+		//Clase para crear y cerrar la conexion con la base de datos
+
+	clsListadosDAL
+		List<clsMarca> ObtenerListadoCompletoMarcasDAL()
+		List<clsModelo> ObtenerListadoModelosPorMarcaDAL(int idMarca)
+		clsMarca ObtenerMarcaPorIdDAL(int id)		
+
+	clsGestionarRegistrosDAL
+		int editarPrecioPorIdDAL(int id)
+		int editarModelosAsociadosMarcasDAL(int id)
+		int numModelosDeMarcaDAL(int id)
+		
+CAPA BL
+	clsListadosBL
+		List<clsMarcas> ObtenerListadoCompletoMarcasBL()
+		List<clsModelo> ObtenerListadoModelosPorMarcaBL(int idDepartamento)
+		clsMarca ObtenerMarcaPorIdBL(int id)
+
+	GestionarRegistrosDAL
+		int editarModeloPorIdBL(int id)
+		int numModelosDeMarcaBL(int id)
+
+CAPA ENTIDADES
+
+	clsMarca
+	  id
+	  nombre
+
+	clsModelo
+	  id
+	  idMarca
+	  nombre
+	  precio
+
+CAPA UI
+	Model
+		Modelos
+			MarcasConListadoModelos: marca
+				List<clsModelo> modelosAsociados //
+				//Con un constructor con parametros que le llegue un clsMarca
+			
+		ViewModels
+			IndexVM
+				List<MarcaConListadoModelos> MarcaConModelo
+				//Se pide un listado de Marcas que se recorre e iremos devolviendo un listado de MarcasConListadoModelos
+
+
+			EditarPrecioVM: Modelo
+				int cantidadModelosAsociadas //Se calcula en el constructor
+
+	Controllers
+		Marcas
+			Index()
+				return view(IndexVM)
+
+			EditarDepartamento(itn id)
+				return view(EditarMoedeloVM(id))
+
+			[Http post]
+			EditarPrecio(int id)
+				ViewBag.salida //Mensaje de éxito o de error
+				return view(EditarPrecioVM(id))
+
+	Views
+		Marcas
+			Index()
+			  return view(indexVM)
+			
+			EditarPrecio(int id)
+			  return view(EditarModeloVM(id))
+
+			[Http post]
+			EditarPrecio(int id)
+			  ViewBag.salida //Mensaje de éxito o de error
+			  return view(EditarModeloVM(id))
+
+			EditarPrecio
+			  //Mostrará el nombre del Modelo, del precio y un botón para guardar y volver a la página principal
+	
+
+
+

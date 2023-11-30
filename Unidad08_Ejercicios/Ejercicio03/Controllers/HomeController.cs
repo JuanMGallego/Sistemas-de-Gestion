@@ -13,13 +13,15 @@ namespace Ejercicio03.Controllers
 			_logger = logger;
 		}
 
-		public IActionResult Index()
+		public IActionResult Editar()
 		{
-			return View();
-		}
 
-		public IActionResult Privacy()
-		{
+			clsPersona oPersona = new clsPersona();
+
+			oPersona.nombre = "Juanma";
+			oPersona.apellidos = "Gallego Girón";
+			oPersona.tlfno = "643984143";
+
 			return View();
 		}
 

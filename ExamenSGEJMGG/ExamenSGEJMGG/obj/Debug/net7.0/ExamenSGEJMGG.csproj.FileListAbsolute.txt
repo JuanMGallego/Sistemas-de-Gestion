@@ -1,0 +1,7 @@
+C:\Users\jmgallego\Documents\GitHub\Sistemas-de-Gestion\ExamenSGEJMGG\ExamenSGEJMGG\obj\Debug\net7.0\ExamenSGEJMGG.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jmgallego\Documents\GitHub\Sistemas-de-Gestion\ExamenSGEJMGG\ExamenSGEJMGG\obj\Debug\net7.0\ExamenSGEJMGG.AssemblyInfoInputs.cache
+C:\Users\jmgallego\Documents\GitHub\Sistemas-de-Gestion\ExamenSGEJMGG\ExamenSGEJMGG\obj\Debug\net7.0\ExamenSGEJMGG.AssemblyInfo.cs
+C:\Users\jmgallego\Documents\GitHub\Sistemas-de-Gestion\ExamenSGEJMGG\ExamenSGEJMGG\obj\Debug\net7.0\ExamenSGEJMGG.csproj.CoreCompileInputs.cache
+C:\Users\jmgallego\Documents\GitHub\Sistemas-de-Gestion\ExamenSGEJMGG\ExamenSGEJMGG\obj\Debug\net7.0\ExamenSGEJMGG.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\jmgallego\Documents\GitHub\Sistemas-de-Gestion\ExamenSGEJMGG\ExamenSGEJMGG\obj\Debug\net7.0\ExamenSGEJMGG.RazorAssemblyInfo.cache
+C:\Users\jmgallego\Documents\GitHub\Sistemas-de-Gestion\ExamenSGEJMGG\ExamenSGEJMGG\obj\Debug\net7.0\ExamenSGEJMGG.RazorAssemblyInfo.cs

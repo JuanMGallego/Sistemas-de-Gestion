@@ -1,0 +1,56 @@
+DAL
+	Conection
+		clsMyConection
+
+	Listados
+		clsListadoPersonasDAL
+			List<clsPersona>getListaPersonas
+
+	Handlers
+		clsHandlersPersonaDAL
+			int deletePersonaDAL(int id)
+			int updatePersonaDal(int id, ??int IDDEpartamento)
+			int createPersonaDAL(int id, string nombre, string apellidos, string direcccion, string telf, string foto, DateTime fechaNac, ??int idDepartamento)
+			int readPersonaDAL(int id, string nombre, string apellidos, string direcccion, string telf, string foto, DateTime fechaNac, ??int idDepartamento)
+
+UI
+	Controllers
+		HomeController
+
+	Models
+		ViewModels ??
+
+
+	Views
+		clsListaPersonas
+		clsCreatePersona
+		clsReadPersona
+		clsUpdatePersona
+		clsDeletePersona
+
+BL
+	clsListaPersonas
+		List<clsPersona>getListadoPersonas
+	
+	Handlers
+		clsHandlersPersonaDAL
+			int deletePersonaDAL(int id)
+			int updatePersonaDal(int id, int IDDEpartamento)
+			int createPersonaDAL(int id, string nombre, string apellidos, string direcccion, string telf, string foto, DateTime fechaNac, int idDepartamento)
+			int readPersonaDAL(int id, string nombre, string apellidos, string direcccion, string telf, string foto, DateTime fechaNac, int idDepartamento)
+
+Entities
+
+	clsDepartamentos
+        int id
+        string nombreDepartamento
+
+    clsPersona
+        int id
+        string nombre
+        string apellidos
+        string direcccion
+        string telf 
+        string foto
+        DateTime fechaNac
+        int idDepartamento

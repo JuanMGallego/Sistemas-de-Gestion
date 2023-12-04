@@ -58,3 +58,4 @@ C:\Users\JuanmitaELPRO\Documents\GitHub\Sistemas-de-Gestion\Mandaloriano\Mandalo
 C:\Users\JuanmitaELPRO\Documents\GitHub\Sistemas-de-Gestion\Mandaloriano\Mandaloriano3\obj\Debug\net7.0\Mandaloriano3.pdb
 C:\Users\JuanmitaELPRO\Documents\GitHub\Sistemas-de-Gestion\Mandaloriano\Mandaloriano3\obj\Debug\net7.0\Mandaloriano3.genruntimeconfig.cache
 C:\Users\JuanmitaELPRO\Documents\GitHub\Sistemas-de-Gestion\Mandaloriano\Mandaloriano3\obj\Debug\net7.0\ref\Mandaloriano3.dll
+C:\Users\JuanmitaELPRO\Documents\GitHub\Sistemas-de-Gestion\Mandaloriano\Mandaloriano3\obj\Debug\net7.0\Mandaloriano3.sourcelink.json

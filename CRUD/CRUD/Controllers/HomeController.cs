@@ -1,32 +1,151 @@
-﻿using CRUD.Models;
+﻿using BL.Listados;
+using BL.Manejadoras;
+using CRUD.Models.ViewModels;
+using DAL.Listados;
+using Entidades;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
 
 namespace CRUD.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public ActionResult Listado()
         {
-            _logger = logger;
+            try
+            {
+                return View(clsListado.ListadoPersonas());
+            }
+            catch (Exception e)
+            {
+                ViewBag.Error = "Ha ocurrido un error";
+                return View("Error");
+
+            }
         }
 
-        public IActionResult Index()
+        public ActionResult Delete(int id)
         {
-            return View();
+            try
+            {
+                return View(ListaPersonasBL.getPersonaIdBL(id));
+            }
+            catch (Exception e)
+            {
+                ViewBag.Error = "Ha ocurrido un error";
+                return View("Error");
+            }
+
         }
 
-        public IActionResult Privacy()
+        [ActionName("Delete")]
+        [HttpPost]
+        public IActionResult DeletePost(int id)
         {
-            return View();
+            try
+            {
+                int numeroFilas = HandlerPersonaBL.deletePersonaBL(id);
+                if (numeroFilas == 0)
+                {
+                    ViewBag.Info = "Persona no encontrada";
+                }
+                else
+                {
+                    ViewBag.Info = "La persona se ha borrado correctamente";
+                }
+
+                return View("Listado", clsListado.ListadoPersonas());
+            }
+            catch
+            {
+                ViewBag.Error = "Ha ocurrido un error";
+                return View("Error");
+            }
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public ActionResult Edit(int id)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            try
+            {
+                return View(ListaPersonasBL.getPersonaIdBL(id));
+            }
+            catch (Exception e)
+            {
+                ViewBag.Error = "Ha ocurrido un error";
+                return View("Error");
+            }
         }
+
+        [ActionName("Edit")]
+        [HttpPost]
+        public ActionResult EditPost(clsPersona per)
+        {
+            try
+            {
+                int numeroFilas = HandlerPersonaBL.editPersonaBL(per);
+
+                if (numeroFilas == 0)
+                {
+                    ViewBag.Info = "Persona no encontrada";
+                }
+                else
+                {
+                    ViewBag.Info = "La persona se ha borrado correctamente";
+                }
+
+
+                return View("Listado", clsListado.ListadoPersonas());
+            }
+            catch (Exception e)
+            {
+                ViewBag.Error = "Ha ocurrido un error";
+                return View("Error");
+            }
+        }
+
+        public ActionResult Create(int id)
+        {
+            try
+            {
+                
+                return View(ListaPersonasBL.getPersonaIdBL(id));
+            }
+            catch (Exception e)
+            {
+                ViewBag.Error = "Ha ocurrido un error";
+                return View("Error");
+            }
+        }
+
+        [ActionName("Create")]
+        [HttpPost]
+        public ActionResult CreatePost(clsPersona per)
+        {
+            try
+            {
+                int numeroFilas = HandlerPersonaBL.createPersonaBL(per);
+
+                if (numeroFilas == 0)
+                {
+                    ViewBag.Info = "Persona no encontrada";
+                }
+                else
+                {
+                    ViewBag.Info = "La persona se ha creado correctamente";
+                }
+
+
+                return View("Listado", clsListado.ListadoPersonas());
+            }
+            catch (Exception e)
+            {
+                ViewBag.Error = "Ha ocurrido un error";
+                return View("Error");
+            }
+        }
+
     }
+
 }

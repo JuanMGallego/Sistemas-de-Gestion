@@ -1,0 +1,11 @@
+C:\Users\jmgallego\Documents\GitHub\Sistemas-de-Gestion\CRUD\Entidades\bin\Release\net7.0\Entidades.deps.json
+C:\Users\jmgallego\Documents\GitHub\Sistemas-de-Gestion\CRUD\Entidades\bin\Release\net7.0\Entidades.dll
+C:\Users\jmgallego\Documents\GitHub\Sistemas-de-Gestion\CRUD\Entidades\bin\Release\net7.0\Entidades.pdb
+C:\Users\jmgallego\Documents\GitHub\Sistemas-de-Gestion\CRUD\Entidades\obj\Release\net7.0\Entidades.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jmgallego\Documents\GitHub\Sistemas-de-Gestion\CRUD\Entidades\obj\Release\net7.0\Entidades.AssemblyInfoInputs.cache
+C:\Users\jmgallego\Documents\GitHub\Sistemas-de-Gestion\CRUD\Entidades\obj\Release\net7.0\Entidades.AssemblyInfo.cs
+C:\Users\jmgallego\Documents\GitHub\Sistemas-de-Gestion\CRUD\Entidades\obj\Release\net7.0\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\jmgallego\Documents\GitHub\Sistemas-de-Gestion\CRUD\Entidades\obj\Release\net7.0\Entidades.dll
+C:\Users\jmgallego\Documents\GitHub\Sistemas-de-Gestion\CRUD\Entidades\obj\Release\net7.0\refint\Entidades.dll
+C:\Users\jmgallego\Documents\GitHub\Sistemas-de-Gestion\CRUD\Entidades\obj\Release\net7.0\Entidades.pdb
+C:\Users\jmgallego\Documents\GitHub\Sistemas-de-Gestion\CRUD\Entidades\obj\Release\net7.0\ref\Entidades.dll

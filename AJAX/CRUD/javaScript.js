@@ -4,7 +4,7 @@ function pedirDatos()
 
     var miLlamada = new XMLHttpRequest();
 
-    miLlamada.open("GET", "https://vuestraapipersonas/api/Personas");
+    miLlamada.open("GET", "https://crudnervion.azurewebsites.net/api/personas");
 
     //Definicion estados
 

@@ -24,19 +24,18 @@ function formatearFecha(fecha) {
     return year + "-" + month + "-" + day;
 }
 
-// Luego, en tu función crearTablaPersonas, puedes llamar a esta función para formatear la fecha de nacimiento:
 function crearTablaPersonas(arrayPersonas) {
-    var tabla = document.querySelector("#table tbody");
+    var tabla = document.querySelector("tbody");
     arrayPersonas.forEach(function(persona) {
         var fila = document.createElement('tr');
 
         var celdaFoto = document.createElement('td');
         var imagen = document.createElement('img');
-        imagen.src = persona.foto; // Establecer la URL de la imagen
-        imagen.alt = "Foto de " + persona.nombre; // Agregar texto alternativo para accesibilidad
-        imagen.classList.add('foto-marco', 'foto-circular'); // Agregar clases CSS
-        celdaFoto.appendChild(imagen); // Agregar la imagen a la celda
-        fila.appendChild(celdaFoto); // Agregar la celda a la fila
+        imagen.src = persona.foto;
+        imagen.alt = "Foto de " + persona.nombre;
+        imagen.classList.add('foto-marco', 'foto-circular');
+        celdaFoto.appendChild(imagen);
+        fila.appendChild(celdaFoto);
 
         var celdaNombre = document.createElement('td');
         celdaNombre.textContent = persona.nombre;
@@ -47,7 +46,7 @@ function crearTablaPersonas(arrayPersonas) {
         fila.appendChild(celdaApellidos);
 
         var celdaFechaNac = document.createElement('td');
-        celdaFechaNac.textContent = formatearFecha(persona.FechaNac); // Formatear la fecha de nacimiento
+        celdaFechaNac.textContent = formatearFecha(persona.fechaNac);
         fila.appendChild(celdaFechaNac);
 
         var celdaTelefono = document.createElement('td');

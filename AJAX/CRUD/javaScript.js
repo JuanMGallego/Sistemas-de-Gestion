@@ -31,7 +31,15 @@ function crearTablaPersonas(arrayPersonas) {
 
         var celdaFoto = document.createElement('td');
         var imagen = document.createElement('img');
-        imagen.src = persona.foto;
+
+        // Verifica si la URL de la foto es válida
+        if (isValidUrl(persona.foto)) {
+            imagen.src = persona.foto;
+        } else {
+            // Si la URL no es válida, asigna una imagen por defecto
+            imagen.src = "avatar-default-icon.png"; // Cambia 'imagen_por_defecto.jpg' por la URL de tu imagen por defecto
+        }
+
         imagen.alt = "Foto de " + persona.nombre;
         imagen.classList.add('foto-marco', 'foto-circular');
         celdaFoto.appendChild(imagen);
@@ -59,4 +67,14 @@ function crearTablaPersonas(arrayPersonas) {
 
         tabla.appendChild(fila);
     });
+}
+
+// Función para verificar si una cadena es una URL válida
+function isValidUrl(url) {
+    try {
+        new URL(url);
+        return true;
+    } catch (error) {
+        return false;
+    }
 }

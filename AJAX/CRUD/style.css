@@ -12,36 +12,30 @@ body{
 }
 
 .container{
-	position: relative;
+	content: '';
+	position: absolute;
+	justify-content: center;
+	align-items: center;
 	width: 100%;
 	height: 100%;
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 20px 100px;
-}
-
-.container{
-	content: '';
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	left: 0;
-	top: 0;
 	background: linear-gradient(143deg,#0575E6, #02298A) no-repeat center;
 	background-size: cover;
-	z-index: -1;
 }
+
 .contact-box{
 	width: 1200px;
 	height: 800px;
-	padding: 35px;
-	border-radius: 15px ;
+	border-radius: 15px;
 	justify-content: top;
 	align-items: top;
 	background-color: #fff;
 	box-shadow: 0px 0px 19px 5px rgba(0,0,0,0.19);
 	
+}
+
+.container-table{
+	overflow-y: auto;
 }
 
 /* Clase para aplicar un marco a la imagen */
@@ -57,14 +51,9 @@ body{
     height: 75px; /* Ajusta el tamaño según sea necesario */
 }
 
-.container-table{
-	height: 720px;
-}
-
-.container-table table {
+table {
 	border-collapse: collapse;
 	width: 100%;
-	
 }
 
 th, td {
@@ -81,61 +70,4 @@ th {
 
 tr:last-child td {
 	border-bottom: none;
-}
-
-.bottom{
-	overflow: scroll;
-}
-
-.titles{
-	position: relative;
-	padding: 0 0 10px;
-	margin-bottom: 10px;
-}
-
-.titles:after{
-	content: '';
-	position: absolute;
-	left: 50%;
-	bottom: 0;
-	transform: translateX(-50%);
-	height: 4px;
-	width: 50px;
-	border-radius: 2px;
-	background-color: #E87604;
-}
-
-.field{
-	width: 100%;
-	border: 2px solid rgba(0, 0, 0, 0);
-	outline: none;
-	background-color: rgba(230, 230, 230, 0.6);
-	padding: 0.5rem 1rem;
-	font-size: 1.1rem;
-	margin-bottom: 22px;
-	transition: .3s;
-}
-
-.field:hover{
-	background-color: rgba(0, 0, 0, 0.1);
-}
-
-.mission-details-withtitle{
-	margin-top: 20px;
-}
-
-.mission-details {
-	margin-top: 20px;
-	background-color: lightgray;
-	padding: 10px;
-	box-shadow: 0px 0px 19px 5px rgba(0,0,0,0.19)
-}
-
-.clave{
-	margin: 10px;
-	text-decoration: underline;
-}
-
-.valor{
-	margin: 10px;
 }

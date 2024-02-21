@@ -1,38 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD | AJAX</title>
-    <script src="../javaScript.js"></script>
-    <link rel="stylesheet" href="lol.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabla con esquinas redondeadas y filas intercaladas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .rounded-table {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 400px;
+      margin: 20px auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    tr:nth-child(odd) {
+      background-color: #ffffff;
+    }
+    tr:hover {
+      background-color: #ddd;
+    }
+  </style>
 </head>
 <body>
-    <main class="container">
-        <section class="contact-box">
-            <div class="container-table">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Foto</th>
-                            <th>Nombre</th>
-                            <th>Apellidos</th>
-                            <th>Fecha de Nacimiento</th>
-                            <th>Teléfono</th>
-                            <th>Dirección</th>
-                        </tr>
-                    </thread>
-                    <tbody>
-                        
-                    </tbody>
-                </table>
-            </div>
-        </section>
-        <script>
-            window.onload = function () {
-                pedirDatos();
-            }
-        </script>
-    </main>
+
+<div class="rounded-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Edad</th>
+        <th>Ciudad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Carlos</td>
+        <td>25</td>
+        <td>Madrid</td>
+      </tr>
+      <tr>
+        <td>Ana</td>
+        <td>30</td>
+        <td>Barcelona</td>
+      </tr>
+      <tr>
+        <td>Pablo</td>
+        <td>22</td>
+        <td>Sevilla</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 </body>
 </html>

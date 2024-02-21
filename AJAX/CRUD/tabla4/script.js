@@ -23,158 +23,6 @@ table_headings.forEach((head, i) => {
     }
 })
 
-// 3. Converting HTML table to PDF
-
-const pdf_btn = document.querySelector('#toPDF');
-const customers_table = document.querySelector('#customers_table');
-
-
-const toPDF = function (customers_table) {
-    const html_code = `
-    <!DOCTYPE html>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <main class="table" id="customers_table">${customers_table.innerHTML}</main>`;
-
-    const new_window = window.open();
-    new_window.document.write(html_code);
-
-    setTimeout(() => {
-        new_window.print();
-        new_window.close();
-    }, 400);
-}
-
-pdf_btn.onclick = () => {
-    toPDF(customers_table);
-}
-
-// 4. Converting HTML table to JSON
-
-const json_btn = document.querySelector('#toJSON');
-
-const toJSON = function (table) {
-    let table_data = [],
-        t_head = [],
-
-        t_headings = table.querySelectorAll('th'),
-        t_rows = table.querySelectorAll('tbody tr');
-
-    for (let t_heading of t_headings) {
-        let actual_head = t_heading.textContent.trim().split(' ');
-
-        t_head.push(actual_head.splice(0, actual_head.length - 1).join(' ').toLowerCase());
-    }
-
-    t_rows.forEach(row => {
-        const row_object = {},
-            t_cells = row.querySelectorAll('td');
-
-        t_cells.forEach((t_cell, cell_index) => {
-            const img = t_cell.querySelector('img');
-            if (img) {
-                row_object['customer image'] = decodeURIComponent(img.src);
-            }
-            row_object[t_head[cell_index]] = t_cell.textContent.trim();
-        })
-        table_data.push(row_object);
-    })
-
-    return JSON.stringify(table_data, null, 4);
-}
-
-json_btn.onclick = () => {
-    const json = toJSON(customers_table);
-    downloadFile(json, 'json')
-}
-
-// 5. Converting HTML table to CSV File
-
-const csv_btn = document.querySelector('#toCSV');
-
-const toCSV = function (table) {
-    // Code For SIMPLE TABLE
-    // const t_rows = table.querySelectorAll('tr');
-    // return [...t_rows].map(row => {
-    //     const cells = row.querySelectorAll('th, td');
-    //     return [...cells].map(cell => cell.textContent.trim()).join(',');
-    // }).join('\n');
-
-    const t_heads = table.querySelectorAll('th'),
-        tbody_rows = table.querySelectorAll('tbody tr');
-
-    const headings = [...t_heads].map(head => {
-        let actual_head = head.textContent.trim().split(' ');
-        return actual_head.splice(0, actual_head.length - 1).join(' ').toLowerCase();
-    }).join(',') + ',' + 'image name';
-
-    const table_data = [...tbody_rows].map(row => {
-        const cells = row.querySelectorAll('td'),
-            img = decodeURIComponent(row.querySelector('img').src),
-            data_without_img = [...cells].map(cell => cell.textContent.replace(/,/g, ".").trim()).join(',');
-
-        return data_without_img + ',' + img;
-    }).join('\n');
-
-    return headings + '\n' + table_data;
-}
-
-csv_btn.onclick = () => {
-    const csv = toCSV(customers_table);
-    downloadFile(csv, 'csv', 'customer orders');
-}
-
-// 6. Converting HTML table to EXCEL File
-
-const excel_btn = document.querySelector('#toEXCEL');
-
-const toExcel = function (table) {
-    // Code For SIMPLE TABLE
-    // const t_rows = table.querySelectorAll('tr');
-    // return [...t_rows].map(row => {
-    //     const cells = row.querySelectorAll('th, td');
-    //     return [...cells].map(cell => cell.textContent.trim()).join('\t');
-    // }).join('\n');
-
-    const t_heads = table.querySelectorAll('th'),
-        tbody_rows = table.querySelectorAll('tbody tr');
-
-    const headings = [...t_heads].map(head => {
-        let actual_head = head.textContent.trim().split(' ');
-        return actual_head.splice(0, actual_head.length - 1).join(' ').toLowerCase();
-    }).join('\t') + '\t' + 'image name';
-
-    const table_data = [...tbody_rows].map(row => {
-        const cells = row.querySelectorAll('td'),
-            img = decodeURIComponent(row.querySelector('img').src),
-            data_without_img = [...cells].map(cell => cell.textContent.trim()).join('\t');
-
-        return data_without_img + '\t' + img;
-    }).join('\n');
-
-    return headings + '\n' + table_data;
-}
-
-excel_btn.onclick = () => {
-    const excel = toExcel(customers_table);
-    downloadFile(excel, 'excel');
-}
-
-const downloadFile = function (data, fileType, fileName = '') {
-    const a = document.createElement('a');
-    a.download = fileName;
-    const mime_types = {
-        'json': 'application/json',
-        'csv': 'text/csv',
-        'excel': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-    }
-    a.href = `
-        data:${mime_types[fileType]};charset=utf-8,${encodeURIComponent(data)}
-    `;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-}
-
 function pedirDatos() {
     var miLlamada = new XMLHttpRequest();
     miLlamada.open("GET", "https://crudnervion.azurewebsites.net/api/Personas");
@@ -198,11 +46,14 @@ function formatearFecha(fecha) {
     var month = ("0" + (fechaObj.getMonth() + 1)).slice(-2); // El mes es devuelto de 0 a 11, por eso se suma 1
     var day = ("0" + fechaObj.getDate()).slice(-2); // Asegura que el día siempre tenga dos dígitos
 
-    return year + "-" + month + "-" + day;
+    return year + "/" + month + "/" + day;
 }
 
 function crearTablaPersonas(arrayPersonas) {
     var tabla = document.querySelector("tbody");
+
+    tabla.innerHTML = '';
+
     arrayPersonas.forEach(function (persona) {
         var fila = document.createElement('tr');
 
@@ -214,7 +65,7 @@ function crearTablaPersonas(arrayPersonas) {
             imagen.src = persona.foto;
         } else {
             // Si la URL no es válida, asigna una imagen por defecto
-            imagen.src = "avatar-default-icon.png"; // Cambia 'imagen_por_defecto.jpg' por la URL de tu imagen por defecto
+            imagen.src = "images/avatar-default-icon.png"; // Cambia 'imagen_por_defecto.jpg' por la URL de tu imagen por defecto
         }
 
         imagen.alt = "Foto de " + persona.nombre;
@@ -241,6 +92,23 @@ function crearTablaPersonas(arrayPersonas) {
         var celdaDireccion = document.createElement('td');
         celdaDireccion.textContent = persona.direccion;
         fila.appendChild(celdaDireccion);
+
+        // Crear los botones clickeables
+        var celdaBotones = document.createElement('td');
+        var botonEditar = document.createElement('button');
+        botonEditar.textContent = 'Editar';
+        botonEditar.addEventListener('click', function() {
+            // Lógica para editar la persona
+            console.log('Editar persona: ' + persona.nombre);
+        });
+        var botonEliminar = document.createElement('button');
+        botonEliminar.textContent = 'Eliminar';
+        botonEliminar.addEventListener('click', function() {
+            // Lógica para eliminar la persona
+            console.log('Eliminar persona: ' + persona.nombre);
+        });
+        celdaBotones.appendChild(botonEditar);
+        celdaBotones.appendChild(botonEliminar);
 
         tabla.appendChild(fila);
     });
@@ -280,4 +148,174 @@ function sortTable(column, sort_asc) {
         .map(sorted_row => document.querySelector('tbody').appendChild(sorted_row));
 }
 
+// Obtener la ventana modal y el botón de cierre
+var modal = document.getElementById("myModal");
+var span = document.getElementsByClassName("close")[0];
 
+// Función para mostrar la ventana modal
+function showModal() {
+  modal.style.display = "block";
+}
+
+// Función para ocultar la ventana modal
+function closeModal() {
+  modal.style.display = "none";
+}
+
+// Cierra la ventana modal cuando se hace clic en el botón de cierre
+span.onclick = function() {
+  closeModal();
+}
+
+// Cierra la ventana modal cuando se hace clic fuera de ella
+window.onclick = function(event) {
+  if (event.target == modal) {
+    closeModal();
+  }
+}
+
+// Agrega un listener al botón para mostrar la ventana modal
+document.getElementById("myButton").addEventListener("click", function() {
+  showModal();
+});
+
+document.getElementById("saveButton").addEventListener("click", function() {
+    // Obtener los valores de los campos del formulario
+    var foto = document.getElementById("foto").value;
+    var nombre = document.getElementById("nombre").value;
+    var apellidos = document.getElementById("apellidos").value;
+    var fechaNac = document.getElementById("fechaNac").value;
+    var telefono = document.getElementById("telefono").value;
+    var direccion = document.getElementById("direccion").value;
+    // Otros campos del formulario
+    
+    // Crear un objeto Persona con los datos del formulario
+    var nuevaPersona = {
+        foto: foto,
+        nombre: nombre,
+        apellidos: apellidos,
+        fechaNac: fechaNac,
+        telefono: telefono,
+        direccion: direccion
+    };
+
+    // Llamar a la función insertar con el objeto Persona
+    insertar(nuevaPersona);
+
+    // Cerrar la ventana modal
+    closeModal();
+});
+
+function insertar(Persona) {
+
+    var miLlamada = new XMLHttpRequest();
+    miLlamada.open("POST", "https://crudnervion.azurewebsites.net/api/Personas");
+    miLlamada.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+    var json = JSON.stringify(Persona);
+
+    // Definicion estados
+
+    miLlamada.onreadystatechange = function () {
+        if (miLlamada.readyState < 4) {
+            //aquí se puede poner una imagen de un reloj o un texto “Cargando”
+        }
+        else if (miLlamada.readyState == 4 && miLlamada.status == 200) {
+            pedirDatos();
+        }
+    };
+
+    miLlamada.send(json);
+
+}
+
+document.getElementById("editButton").addEventListener("click", function() {
+    // Obtener los valores de los campos del formulario
+    var foto = document.getElementById("foto").value;
+    var nombre = document.getElementById("nombre").value;
+    var apellidos = document.getElementById("apellidos").value;
+    var fechaNac = document.getElementById("fechaNac").value;
+    var telefono = document.getElementById("telefono").value;
+    var direccion = document.getElementById("direccion").value;
+    // Otros campos del formulario
+    
+    // Crear un objeto Persona con los datos del formulario
+    var nuevaPersona = {
+        foto: foto,
+        nombre: nombre,
+        apellidos: apellidos,
+        fechaNac: fechaNac,
+        telefono: telefono,
+        direccion: direccion
+    };
+
+    // Llamar a la función insertar con el objeto Persona
+    mostrarModalEdicion(nuevaPersona);
+
+    // Cerrar la ventana modal
+    closeModal();
+});
+
+// Función para mostrar la ventana modal de edición
+function mostrarModalEdicion(persona) {
+    // Mostrar la ventana modal de edición
+    modal.style.display = "block";
+
+    // Llenar los campos del formulario con los datos de la persona a editar
+    document.getElementById("foto").value = persona.foto;
+    document.getElementById("nombre").value = persona.nombre;
+    document.getElementById("apellidos").value = persona.apellidos;
+    document.getElementById("fechaNac").value = persona.fechaNac;
+    document.getElementById("telefono").value = persona.telefono;
+    document.getElementById("direccion").value = persona.direccion;
+
+    // Asociar el evento al botón de guardar para realizar la edición
+    document.getElementById("saveButton").addEventListener("click", function() {
+        // Obtener los nuevos valores de los campos del formulario
+        var nuevaFoto = document.getElementById("foto").value;
+        var nuevoNombre = document.getElementById("nombre").value;
+        var nuevosApellidos = document.getElementById("apellidos").value;
+        var nuevaFechaNac = document.getElementById("fechaNac").value;
+        var nuevoTelefono = document.getElementById("telefono").value;
+        var nuevaDireccion = document.getElementById("direccion").value;
+
+        // Actualizar los datos de la persona
+        persona.foto = nuevaFoto;
+        persona.nombre = nuevoNombre;
+        persona.apellidos = nuevosApellidos;
+        persona.fechaNac = nuevaFechaNac;
+        persona.telefono = nuevoTelefono;
+        persona.direccion = nuevaDireccion;
+
+        // Llamar a la función para actualizar la persona
+        actualizarPersona(persona);
+
+        // Cerrar la ventana modal
+        closeModal();
+    });
+}
+
+function actualizarPersona(persona) {
+    // URL de la API para actualizar la persona
+    var url = "https://crudnervion.azurewebsites.net/api/Personas/" + persona.id;
+
+    // Configuración del objeto de solicitud para el método PUT
+    var requestOptions = {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(persona),
+        redirect: 'follow'
+    };
+
+    // Realizar la solicitud para actualizar la persona
+    fetch(url, requestOptions)
+        .then(response => response.json())
+        .then(result => {
+            console.log("Persona actualizada:", result);
+            // Puedes realizar alguna acción adicional después de actualizar la persona, si es necesario
+            // Por ejemplo, volver a cargar la lista de personas actualizada
+            pedirDatos();
+        })
+        .catch(error => console.log('Error al actualizar la persona:', error));
+}

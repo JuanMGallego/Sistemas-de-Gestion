@@ -1,13 +1,3 @@
-<!-- 
-Responsive HTML Table With Pure CSS - Web Design/UI Design
-
-Code written by:
-👨🏻‍⚕️ Coding Design (Jeet Saru)
-
-> You can do whatever you want with the code. However if you love my content, you can **SUBSCRIBED** my YouTube Channel.
-
-🌎link: www.youtube.com/codingdesign 
- -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,28 +6,48 @@ Code written by:
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CRUD AJAX | JMGG</title>
-    <script src="script.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
     <main class="table" id="customers_table">
         <section class="table__header">
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2 class="model-title">Insertar nueva Persona</h2>
+                    <form id="personForm">
+                        <div class="form-group">
+                          <input type="text" id="foto" placeholder="URL Foto">
+                        </div>
+                        <div class="form-group">
+                          <input type="text" id="nombre" placeholder="Nombre">
+                        </div>
+                        <div class="form-group">
+                          <input type="text" id="apellidos" placeholder="Apellidos">
+                        </div>
+                        <div class="form-group">
+                          <input type="date" id="fechaNac">
+                        </div>
+                        <div class="form-group">
+                          <input type="number" id="telefono" placeholder="Teléfono">
+                        </div>
+                        <div class="form-group">
+                          <input type="text" id="direccion" placeholder="Dirección">
+                        </div>
+                        <button type="button" id="saveButton">Guardar</button>
+                      </form>
+                </div>
+            </div>
             <h1>CRUD AJAX | JMGG</h1>
             <div class="input-group">
                 <input type="search" placeholder="Search Data...">
-                <img src="images/search.png" alt="">
+                <img src="images/busqueda.png" alt="">
             </div>
-            <div class="export__file">
-                <label for="export-file" class="export__file-btn" title="Export File"></label>
-                <input type="checkbox" id="export-file">
-                <div class="export__file-options">
-                    <label>Export As &nbsp; &#10140;</label>
-                    <label for="export-file" id="toPDF">PDF <img src="images/pdf.png" alt=""></label>
-                    <label for="export-file" id="toJSON">JSON <img src="images/json.png" alt=""></label>
-                    <label for="export-file" id="toCSV">CSV <img src="images/csv.png" alt=""></label>
-                    <label for="export-file" id="toEXCEL">EXCEL <img src="images/excel.png" alt=""></label>
-                </div>
+            <div>
+                <button id="myButton">
+                    <img class="plus" src="images/mas.png">
+                </button>
             </div>
         </section>
         <section class="table__body">
@@ -53,11 +63,12 @@ Code written by:
                     </tr>
                 </thead>
                 <tbody>
-                    
+
                 </tbody>
             </table>
         </section>
     </main>
+    <script src="script.js"></script>
     <script>
         window.onload = function () {
             pedirDatos();

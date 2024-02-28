@@ -116,7 +116,7 @@ main.table {
     visibility: visible;
 }
 
-#myButton{
+#addButton{
     width: 40px;
     height: 40px;
     background-color: rgb(73, 202, 94);
@@ -133,16 +133,60 @@ main.table {
     margin-right: 22px;
 }
 
-#myButton:hover {
+#addButton:hover {
     background-color: rgb(58, 165, 76); /* Cambia el color al pasar el ratón por encima */
-  }
+}
 
-.plus {
+table button{
+    width: 40px;
+    height: 40px;
+    background-color: rgb(202, 189, 73);
+    border-radius: 10%; /* Hace que el botón sea circular */
+    border: none;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Agrega sombra para efecto visual */
+    outline: none; /* Quita el contorno al hacer clic */
+    margin-right: 10px;
+}
+
+table button:hover {
+    background-color: rgb(165, 158, 58); /* Cambia el color al pasar el ratón por encima */
+}
+
+.deleteButton{
+    width: 40px;
+    height: 40px;
+    background-color: rgb(202, 73, 73);
+    border-radius: 10%;
+    border: none;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+.deleteButton:hover {
+    background-color: rgb(165, 58, 58);
+}
+
+.img_add {
     width: 30%;
     height: 30%;
 }
 
-.model-title{
+.img_edit, .img_delete {
+    width: 50%;
+    height: 50%;
+}
+
+.model-title {
     margin-bottom: 20px;
 }
 
@@ -153,7 +197,8 @@ main.table {
 input[type="text"],
 input[type="number"],
 input[type="date"],
-#saveButton {
+select,
+#saveButtonInsertar, #saveButtonEditar {
     width: 100%;
     padding: 10px;
     font-size: 16px;
@@ -161,14 +206,14 @@ input[type="date"],
     border-radius: 5px;
 }
 
-#saveButton {
+#saveButtonInsertar, #saveButtonEditar {
     background-color: rgb(73, 202, 94);
     color: #fff;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
-#saveButton:hover {
+#saveButtonInsertar:hover , #saveButtonEditar:hover {
     background-color: rgb(58, 165, 76);
 }
 
@@ -190,7 +235,7 @@ table {
     width: 100%;
 }
 
-td img {
+.fotoPersona {
     width: 36px;
     height: 36px;
     margin-right: .5rem;
@@ -250,37 +295,6 @@ tbody tr.hide td img {
     transition: .2s ease-in-out .5s;
 }
 
-.status {
-    padding: .4rem 0;
-    border-radius: 2rem;
-    text-align: center;
-}
-
-.status.delivered {
-    background-color: #86e49d;
-    color: #006b21;
-}
-
-.status.cancelled {
-    background-color: #d893a3;
-    color: #b30021;
-}
-
-.status.pending {
-    background-color: #ebc474;
-}
-
-.status.shipped {
-    background-color: #6fcaea;
-}
-
-
-@media (max-width: 1000px) {
-    td:not(:first-of-type) {
-        min-width: 12.1rem;
-    }
-}
-
 thead th span.icon-arrow {
     display: inline-block;
     width: 1.3rem;
@@ -316,82 +330,6 @@ thead th.active,tbody td.active {
     color: #6c00bd;
 }
 
-.export__file {
-    position: relative;
-}
-
-.export__file .export__file-btn {
-    display: inline-block;
-    width: 2rem;
-    height: 2rem;
-    background: #fff6 url(images/export.png) center / 80% no-repeat;
-    border-radius: 50%;
-    transition: .2s ease-in-out;
-}
-
-.export__file .export__file-btn:hover { 
-    background-color: #fff;
-    transform: scale(1.15);
-    cursor: pointer;
-}
-
-.export__file input {
-    display: none;
-}
-
-.export__file .export__file-options {
-    position: absolute;
-    right: 0;
-    
-    width: 12rem;
-    border-radius: .5rem;
-    overflow: hidden;
-    text-align: center;
-
-    opacity: 0;
-    transform: scale(.8);
-    transform-origin: top right;
-    
-    box-shadow: 0 .2rem .5rem #0004;
-    
-    transition: .2s;
-}
-
-.export__file input:checked + .export__file-options {
-    opacity: 1;
-    transform: scale(1);
-    z-index: 100;
-}
-
-.export__file .export__file-options label{
-    display: block;
-    width: 100%;
-    padding: .6rem 0;
-    background-color: #f2f2f2;
-    
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-
-    transition: .2s ease-in-out;
-}
-
-.export__file .export__file-options label:first-of-type{
-    padding: 1rem 0;
-    background-color: #86e49d !important;
-}
-
-.export__file .export__file-options label:hover{
-    transform: scale(1.05);
-    background-color: #fff;
-    cursor: pointer;
-}
-
-.export__file .export__file-options img{
-    width: 2rem;
-    height: auto;
-}
-
 /* Estilos para la ventana modal */
 .modal {
     display: none; /* Oculta la ventana modal por defecto */
@@ -407,26 +345,28 @@ thead th.active,tbody td.active {
     padding-top: 60px;
   }
   
-  /* Estilos para el contenido de la ventana modal */
-  .modal-content {
-    background-color: #fefefe;
-    margin: 5% auto; /* Centra la ventana modal verticalmente */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Ancho del contenido */
-  }
-  
-  /* Estilos para el botón de cerrar */
-  .close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
+/* Estilos para el contenido de la ventana modal */
+.modal-content {
+background-color: #fefefe;
+margin: 5% auto; /* Centra la ventana modal verticalmente */
+padding: 20px;
+border: 1px solid #888;
+width: 80%; /* Ancho del contenido */
+}
+
+/* Estilos para el botón de cerrar */
+.closeEditar, .closeInsertar {
+color: #aaaaaa;
+float: right;
+font-size: 28px;
+font-weight: bold;
+}
+
+.closeEditar:hover,
+.closeEditar:focus,
+.closeInsertar:hover,
+.closeInsertar:focus {
+color: #000;
+text-decoration: none;
+cursor: pointer;
+}

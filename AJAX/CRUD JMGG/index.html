@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CRUD AJAX | JMGG</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <main class="table" id="customers_table">
+        <section class="table__header">
+            <div id="myModalInsertar" class="modal">
+                <div class="modal-content">
+                    <span class="closeInsertar">&times;</span>
+                    <h2 class="model-title">Insertar nueva Persona</h2>
+                    <form id="addPersonForm">
+                        <div class="form-group">
+                            <input type="text" id="fotoInsertar" placeholder="URL Foto">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="nombreInsertar" placeholder="Nombre">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="apellidosInsertar" placeholder="Apellidos">
+                        </div>
+                        <div class="form-group">
+                            <input type="date" id="fechaNacInsertar">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" id="telefonoInsertar" placeholder="Teléfono">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="direccionInsertar" placeholder="Dirección">
+                        </div>
+                        <div class="form-group">
+                            <select name="Departamentos" id="departamentoInsertar">
+
+                            </select>
+                        </div>
+                        <button type="button" id="saveButtonInsertar">Guardar</button>
+                    </form>
+                </div>
+            </div>
+            <div id="myModalEditar" class="modal">
+                <div class="modal-content">
+                    <span class="closeEditar">&times;</span>
+                    <h2 class="model-title">Editar Persona</h2>
+                    <form id="addPersonForm">
+                        <div class="form-group">
+                            <input type="text" id="fotoEditar" placeholder="URL Foto">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="nombreEditar" placeholder="Nombre">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="apellidosEditar" placeholder="Apellidos">
+                        </div>
+                        <div class="form-group">
+                            <input type="date" id="fechaNacEditar">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" id="telefonoEditar" placeholder="Teléfono">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="direccionEditar" placeholder="Dirección">
+                        </div>
+                        <div class="form-group">
+                            <select name="Departamentos" id="departamentoEditar">
+
+                            </select>
+                        </div>
+                        <button type="button" id="saveButtonEditar">Guardar</button>
+                    </form>
+                </div>
+                
+            </div>
+            <h1>CRUD AJAX | JMGG</h1>
+            <div class="input-group">
+                <input type="search" placeholder="Search Data...">
+                <img src="images/busqueda.png" alt="">
+            </div>
+            <div>
+                <button id="addButton">
+                    <img class="img_add" src="images/mas.png">
+                </button>
+            </div>
+        </section>
+        <section class="table__body">
+            <table>
+                <thead>
+                    <tr>
+                        <th> Foto </th>
+                        <th> Nombre <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Apellidos <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Fecha de Nacimiento <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Teléfono </th>
+                        <th> Dirección <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Departamento <span class="icon-arrow">&UpArrow;</span></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script src="script.js"></script>
+    <script>
+        window.onload = function () {
+            pedirDatosPersonas();
+        }
+    </script>
+
+</body>
+
+</html>
